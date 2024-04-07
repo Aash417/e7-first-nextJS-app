@@ -1,3 +1,9 @@
+import SignupComponent from '@/components/SignupComponent';
+
 export default function Home() {
-	return <div className=''>signup </div>;
+	return (
+		<div className=''>
+			<SignupComponent />
+		</div>
+	);
 }
