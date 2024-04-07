@@ -1,14 +1,14 @@
 import { PrismaClient } from '@prisma/client';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export function GET() {
+export async function GET() {
 	// db logic
-
+	const user = await prisma.user.findFirst({});
 	return Response.json({
-		name: 'aashish',
-		email: 'a@mail.com',
+		username: user?.username,
+		password: user?.password,
 	});
 }
 
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 	});
 
 	console.log(body);
-	return Response.json({
+	return NextResponse.json({
 		msg: 'working',
 		body,
 	});
